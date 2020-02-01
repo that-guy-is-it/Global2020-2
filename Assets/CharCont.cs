@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharCont : MonoBehaviour
 {
 
-    public static float speed = 1.5f;
+    public float speed = 1.5f;
     public float jumpSpeed = 1.0f;
     private Vector3 velocity = Vector3.zero;
     private Rigidbody2D rigid;
@@ -62,13 +62,13 @@ public class CharCont : MonoBehaviour
 
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            print("Right pressed");
+            //print("Right pressed");
             rigid.velocity = new Vector2(speed * 2, rigid.velocity.y);
             movedRight = true;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            print("Left pressed");
+            //print("Left pressed");
             rigid.velocity = new Vector2(speed * -2, rigid.velocity.y);
             movedRight = false;
         }
