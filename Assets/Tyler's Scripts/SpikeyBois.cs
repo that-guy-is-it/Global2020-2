@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeyBois : MonoBehaviour
 {
-    public GameObject GM;
+    public GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
