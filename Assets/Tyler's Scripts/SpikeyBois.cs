@@ -8,7 +8,10 @@ public class SpikeyBois : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (GM == null)
+        {
+            GM = GameObject.FindGameObjectWithTag("GameManager");
+        }
     }
 
     // Update is called once per frame
@@ -18,4 +21,11 @@ public class SpikeyBois : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D player)
+    {
+        if (player = GM.GetComponent<GameManager>().Player.GetComponent<BoxCollider2D>())
+            Debug.Log("Hey Baby I'ma spikey boi");
+        else
+            Debug.Log("FMl");
+    }
 }
