@@ -107,7 +107,12 @@ public class CharCont : MonoBehaviour
             rigid.gravityScale = 0.0f;
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
+                print("On ladder and going up");
                 rigid.transform.position = new Vector3(rigid.transform.position.x, rigid.transform.position.y + 0.2f, 0.0f);
+            } else if(Input.GetKey("down") || Input.GetKey("s"))
+            {
+                rigid.transform.position = new Vector3(rigid.transform.position.x, rigid.transform.position.y - 0.2f, 0.0f);
+                print("On ladder and going down");
             }
         }
     }
