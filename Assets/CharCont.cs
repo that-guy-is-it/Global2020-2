@@ -115,11 +115,11 @@ public class CharCont : MonoBehaviour
             if (movedRight)
             {
                 print("Flying Left");
-                rigid.AddForce(transform.right * 150 + transform.up);
+                rigid.AddForce((transform.right + transform.up) * 500);
             } else
             {
                 print("Flying Right");
-                rigid.AddForce(transform.right * -150 + transform.up);
+                rigid.AddForce((transform.right + transform.up) * 500);
             }
         }
     }
