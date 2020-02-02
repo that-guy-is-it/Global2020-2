@@ -19,6 +19,8 @@ public class CharCont : MonoBehaviour
     private bool invincible;
     private bool isHit = false;
     float countdown;
+    private bool rolled = false;
+    private float rollTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +35,13 @@ public class CharCont : MonoBehaviour
     {
         //grounded = 
         MoveCompute();
-        if(healthPoints == 0 && messagePrinted)
+        if (healthPoints == 0 && messagePrinted)
         {
             messagePrinted = true;
             print("Git gud lol");
         }
 
-        if(isHit == true)
+        if (isHit == true)
         {
             InvincibilityFrames();
         }
@@ -50,23 +52,31 @@ public class CharCont : MonoBehaviour
         //if rolling...
         if (Input.GetKey("e"))
         {
-            
-            //print("Rolling...");
-            if (movedRight)
+            if (rolled == false)
             {
-                //print("Rolling Right...");
-                //rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(speed, rigid.velocity.y), ref currVel, 0.02f);
-                //rigid.velocity = new Vector2(speed * 4, 0);
-                rigid.AddForce(transform.right * speed * 300);
+                rolled = true;
+                //print("Rolling...");
+                if (movedRight && Time.time > rollTime)
+                {
+                    //print("Rolling Right...");
+                    //rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(speed, rigid.velocity.y), ref currVel, 0.02f);
+                    //rigid.velocity = new Vector2(speed * 4, 0);
+                    rigid.AddForce(transform.right * speed * 300);
+                }
+                else if (Time.time > rollTime)
+                {
+                    //print("Rolling Left...");
+                    //rigid.velocity = new Vector2(speed * -4, 0);
+                    rigid.AddForce(transform.right * speed * -300);
+                }
             }
             else
             {
-                //print("Rolling Left...");
-                //rigid.velocity = new Vector2(speed * -4, 0);
-                rigid.AddForce(transform.right * speed * -300);
-
+                rollTime = Time.time + 10;
+                rolled = false;
             }
         }
+
         //if jumping...
 
         //if neither...
@@ -99,7 +109,7 @@ public class CharCont : MonoBehaviour
         {
             grounded = true;
         }
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -110,12 +120,13 @@ public class CharCont : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ladder")
+        if (collision.gameObject.tag == "Ladder")
         {
             onLadder = true;
-        } else if(collision.gameObject.tag == "Spikes")
+        }
+        else if (collision.gameObject.tag == "Spikes")
         {
-            if(healthPoints > 0)
+            if (healthPoints > 0)
             {
                 if (!invincible)
                 {
@@ -126,11 +137,10 @@ public class CharCont : MonoBehaviour
             }
             if (movedRight)
             {
-                print("Flying Left");
                 rigid.AddForce((transform.right + transform.up) * 500);
-            } else
+            }
+            else
             {
-                print("Flying Right");
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
         }
@@ -140,9 +150,8 @@ public class CharCont : MonoBehaviour
     {
         if (invincible)
         {
-            if(Time.time > countdown)
+            if (Time.time > countdown)
             {
-                Debug.Log("3 seconds have passed");
                 invincible = false;
                 isHit = false;
             }
@@ -164,7 +173,8 @@ public class CharCont : MonoBehaviour
             {
                 //print("On ladder and going up");
                 rigid.transform.position = new Vector3(rigid.transform.position.x, rigid.transform.position.y + 0.2f, 0.0f);
-            } else if(Input.GetKey("down") || Input.GetKey("s"))
+            }
+            else if (Input.GetKey("down") || Input.GetKey("s"))
             {
                 rigid.transform.position = new Vector3(rigid.transform.position.x, rigid.transform.position.y - 0.2f, 0.0f);
                 //print("On ladder and going down");
@@ -181,6 +191,6 @@ public class CharCont : MonoBehaviour
 
     }
 
-    
+
 
 }
