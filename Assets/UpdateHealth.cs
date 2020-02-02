@@ -20,13 +20,20 @@ public class UpdateHealth : MonoBehaviour
         if(GM.GetComponent<GameManager>().Player.GetComponent<CharCont>().healthPoints == 2)
         {
             transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+
         }
         else if (GM.GetComponent<GameManager>().Player.GetComponent<CharCont>().healthPoints == 1)
         {
+            transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(true);
         }
         else if (GM.GetComponent<GameManager>().Player.GetComponent<CharCont>().healthPoints == 0)
         {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(false);
         }
     }
