@@ -23,6 +23,7 @@ public class ItemPickup : MonoBehaviour
         int stopHere = 0;
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<CharCont>().soundEffects.Play();
             Destroy(gameObject);
             GM.Player.GetComponent<CharCont>().pickupsNum += 1;
         }
