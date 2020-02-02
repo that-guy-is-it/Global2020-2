@@ -9,7 +9,7 @@ TagManager:
   - GameManager
   - Spikes
   - Pickup
-  - Laser
+  - Bullet
   layers:
   - Default
   - TransparentFX
