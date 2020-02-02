@@ -56,28 +56,32 @@ public class CharCont : MonoBehaviour
         //if rolling...
         if (Input.GetKey("e"))
         {
-            if (rolled == false)
+            if (rolled == true)
             {
-                rolled = true;
+                Debug.Log("Added 1 second");
+                rollTime = Time.time + 1;
+                rolled = false;
+            }
+            else
+            {
                 //print("Rolling...");
                 if (movedRight && Time.time > rollTime)
                 {
                     //print("Rolling Right...");
                     //rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(speed, rigid.velocity.y), ref currVel, 0.02f);
                     //rigid.velocity = new Vector2(speed * 4, 0);
-                    rigid.AddForce(transform.right * speed * 300);
+                    rigid.AddForce(transform.right * speed * 3000);
+                    if(Time.time > rollTime)
+                    rolled = true;
                 }
                 else if (Time.time > rollTime)
                 {
                     //print("Rolling Left...");
                     //rigid.velocity = new Vector2(speed * -4, 0);
-                    rigid.AddForce(transform.right * speed * -300);
+                    rigid.AddForce(transform.right * speed * -3000);
+                    if (Time.time > rollTime)
+                        rolled = true;
                 }
-            }
-            else
-            {
-                rollTime = Time.time + 10;
-                rolled = false;
             }
         }
 
