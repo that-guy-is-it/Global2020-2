@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tyler'sScenes/Level2.unity
     guid: b7a7d5cd6a126bf4c94ea4a2f354165f
+  - enabled: 1
+    path: Assets/Scenes/Tyler'sScenes/TitileScreen.unity
+    guid: 2739ea379df418c488c670b4c2b9d56b
   m_configObjects: {}
