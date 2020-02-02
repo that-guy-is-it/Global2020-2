@@ -20,9 +20,10 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        int stopHere = 0;
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Destroy(this);
+            Destroy(gameObject);
             GM.Player.GetComponent<CharCont>().pickupsNum += 1;
         }
     }
