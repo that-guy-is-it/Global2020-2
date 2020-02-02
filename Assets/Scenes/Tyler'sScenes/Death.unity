@@ -569,7 +569,7 @@ PrefabInstance:
     - target: {fileID: 1959659067045916825, guid: 08eea97f8a74eeb4abb763e11c5696a7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: TitleScreen
+      value: TitileScreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08eea97f8a74eeb4abb763e11c5696a7, type: 3}

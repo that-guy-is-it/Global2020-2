@@ -81,6 +81,7 @@ public class CharCont : MonoBehaviour
         {
             if (rolled == true)
             {
+                anim.SetBool("Roll", true);
                 Debug.Log("Added 1 second");
                 InvincibilityFrames(0.2f);
                 rollTime = Time.time + 1;
@@ -88,6 +89,7 @@ public class CharCont : MonoBehaviour
             }
             else
             {
+                anim.SetBool("Roll", false);
                 //print("Rolling...");
                 if (movedRight && Time.time > rollTime)
                 {
@@ -119,20 +121,20 @@ public class CharCont : MonoBehaviour
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             //print("Right pressed");
-            anim.SetTrigger("Walk");
+            anim.SetFloat("Walk",Mathf.Abs(speed));
             rigid.velocity = new Vector2(speed * 2, rigid.velocity.y);
             movedRight = true;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-
-            anim.SetTrigger("WalkIgor");
+            anim.SetFloat("Walk", Mathf.Abs(speed));
             //print("Left pressed");
             rigid.velocity = new Vector2(speed * -2, rigid.velocity.y);
             movedRight = false;
         }
         else
         {
+            anim.SetFloat("Walk", 0);
             rigid.velocity = new Vector2(0, rigid.velocity.y);
         }
 
