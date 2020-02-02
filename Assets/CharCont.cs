@@ -17,7 +17,8 @@ public class CharCont : MonoBehaviour
     public GameObject pickupObject;
     public int healthPoints = 3;
     private bool messagePrinted = false;
-
+    public int pickupsNum = 0;
+    const int pickupsTarget = 3;
     private bool invincible;
     private bool isHit = false;
     float countdown;
@@ -35,6 +36,12 @@ public class CharCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(pickupsNum == pickupsTarget)
+        {
+            print("You got them all!");
+        }
+
         //grounded = 
         MoveCompute();
         if(healthPoints == 0 && messagePrinted)
