@@ -80,7 +80,7 @@ public class CharCont : MonoBehaviour
             if (rolled == true)
             {
                 Debug.Log("Added 1 second");
-                InvincibilityFrames(0.5f);
+                InvincibilityFrames(0.2f);
                 rollTime = Time.time + 1;
                 rolled = false;
             }
@@ -174,7 +174,7 @@ public class CharCont : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Laser")
         {
-            if (healthPoints > 0)
+            /*if (healthPoints > 0)
             {
                 if (!invincible)
                 {
@@ -183,7 +183,8 @@ public class CharCont : MonoBehaviour
                     isHit = true;
                 }
                 print(healthPoints);
-            }
+            }*/
+            TakeDamage();
         }
         else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
         {
