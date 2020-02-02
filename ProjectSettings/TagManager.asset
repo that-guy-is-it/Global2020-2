@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - Pickup
   - Bullet
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3149047215
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

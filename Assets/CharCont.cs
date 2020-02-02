@@ -161,6 +161,23 @@ public class CharCont : MonoBehaviour
         {
             TakeDamage();
         }
+        else if (collision.gameObject.tag == "Laser")
+        {
+            if (healthPoints > 0)
+            {
+                if (!invincible)
+                {
+                    //healthPoints--;
+                    DecreaseHealth();
+                    isHit = true;
+                }
+                print(healthPoints);
+            }
+        }
+        else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
+        {
+            print("You win!");
+        }
     }
 
     void TakeDamage()
@@ -186,23 +203,7 @@ public class CharCont : MonoBehaviour
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
         }
-        else if (collision.gameObject.tag == "Laser")
-        {
-            if (healthPoints > 0)
-            {
-                if (!invincible)
-                {
-                    //healthPoints--;
-                    DecreaseHealth();
-                    isHit = true;
-                }
-                print(healthPoints);
-            }
-        }
-        else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
-        {
-            print("You win!");
-        }
+        
     }
 
     private void InvincibilityFrames(float timeDelay)
