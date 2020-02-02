@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharCont : MonoBehaviour
 {
@@ -58,7 +59,7 @@ public class CharCont : MonoBehaviour
             InvincibilityFrames(3);
         }
         CheckInvinsibility();
-        
+
         MoveCompute();
 
     }
@@ -164,11 +165,13 @@ public class CharCont : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Spikes")
         {
-            TakeDamage();   
-        } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
+            TakeDamage();
+        }
+        else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
         {
             print("You win!");
-        } else if(collision.gameObject.tag == "Bullet")
+        }
+        else if (collision.gameObject.tag == "Bullet")
         {
             TakeDamage();
         }
@@ -206,13 +209,18 @@ public class CharCont : MonoBehaviour
                 }
                 print(healthPoints);
             }
+            else if (healthPoints <= 0)
+            {
+                SceneManager.LoadScene("Death");
+            }
             if (movedRight)
             {
-                rigid.AddForce((transform.right + transform.up) * 500);
+                rigid.AddForce((transform.right + transform.up) * 250);
             }
             else
             {
-                rigid.AddForce((transform.right + transform.up) * 500);
+                //* 500
+                rigid.AddForce((transform.right + transform.up) * 250);
             }
         }
     }
@@ -278,6 +286,5 @@ public class CharCont : MonoBehaviour
             curTime -= .5f;
         }
     }
-
 }
 

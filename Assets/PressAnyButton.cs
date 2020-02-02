@@ -17,7 +17,7 @@ public class PressAnyButton : MonoBehaviour
         if (Input.anyKeyDown)
         {
             //Load the scene
-            LoadLevel("Level1");
+            LoadLevel("Level2");
         }
     }
 

@@ -26823,6 +26823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JungleBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 348325018031878423, guid: 9e65ab1c3c77fb443aa9fce4555aabb6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e65ab1c3c77fb443aa9fce4555aabb6, type: 3}
 --- !u!1001 &2316010593837301279
