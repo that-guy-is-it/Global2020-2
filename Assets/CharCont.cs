@@ -14,11 +14,15 @@ public class CharCont : MonoBehaviour
     public bool movedRight = true;
     private Vector2 currVel;
     public bool onLadder = false;
+    public GameObject pickupObject;
     public int healthPoints = 3;
     private bool messagePrinted = false;
+
     private bool invincible;
     private bool isHit = false;
     float countdown;
+
+    private bool grabbedPickupForLevel = false;
 
     // Start is called before the first frame update
     void Start()
@@ -110,12 +114,18 @@ public class CharCont : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ladder")
+        if (collision.gameObject.tag == "Ladder")
         {
             onLadder = true;
-        } else if(collision.gameObject.tag == "Spikes")
+        } else if (collision.gameObject.tag == "Pickup") 
         {
-            if(healthPoints > 0)
+            //if grabbed the pickup...
+            grabbedPickupForLevel = true;
+            GameObject.Destroy(pickupObject);
+
+        }  else if (collision.gameObject.tag == "Spikes")
+        {
+            if (healthPoints > 0)
             {
                 if (!invincible)
                 {
@@ -133,6 +143,9 @@ public class CharCont : MonoBehaviour
                 print("Flying Right");
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
+        } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
+        {
+            print("You win!");
         }
     }
 
