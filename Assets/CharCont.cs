@@ -26,14 +26,15 @@ public class CharCont : MonoBehaviour
     private float rollTime = 0;
     float curTime = 0;
     float nextDamage = 1;
-
+    public GameObject Igor;
+    Animator anim;
     private bool grabbedPickupForLevel = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-
+        anim = Igor.GetComponent<Animator>();
 
     }
 
@@ -117,11 +118,14 @@ public class CharCont : MonoBehaviour
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             //print("Right pressed");
+            anim.SetTrigger("Walk");
             rigid.velocity = new Vector2(speed * 2, rigid.velocity.y);
             movedRight = true;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
+
+            anim.SetTrigger("WalkIgor");
             //print("Left pressed");
             rigid.velocity = new Vector2(speed * -2, rigid.velocity.y);
             movedRight = false;
