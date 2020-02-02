@@ -27,8 +27,13 @@ public class CharCont : MonoBehaviour
     private float rollTime = 0;
     float curTime = 0;
     float nextDamage = 1;
+
+    public AudioSource soundEffects;
+    public GameObject IgorSprite;
+
     public GameObject Igor;
     Animator anim;
+
     private bool grabbedPickupForLevel = false;
 
     // Start is called before the first frame update
@@ -119,7 +124,12 @@ public class CharCont : MonoBehaviour
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             //print("Right pressed");
+
+
+            IgorSprite.transform.rotation = new Quaternion(0, 0, 0, 0);
+
             anim.SetTrigger("Walk");
+
             rigid.velocity = new Vector2(speed * 2, rigid.velocity.y);
             movedRight = true;
         }
@@ -128,6 +138,7 @@ public class CharCont : MonoBehaviour
 
             anim.SetTrigger("WalkIgor");
             //print("Left pressed");
+            IgorSprite.transform.rotation = new Quaternion(0, 180, 0, 0);
             rigid.velocity = new Vector2(speed * -2, rigid.velocity.y);
             movedRight = false;
         }
