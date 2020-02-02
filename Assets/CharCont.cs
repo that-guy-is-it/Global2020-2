@@ -114,6 +114,7 @@ public class CharCont : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("Trigger acted upon");
         if (collision.gameObject.tag == "Ladder")
         {
             onLadder = true;
