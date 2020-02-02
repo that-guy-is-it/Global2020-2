@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: a0b7d9b278efc424f9d5f3b0d5470d40
+  - enabled: 1
+    path: Assets/Scenes/Tyler'sScenes/Death.unity
+    guid: cb540cc69bb006a4295e4f3a83a75d14
   m_configObjects: {}

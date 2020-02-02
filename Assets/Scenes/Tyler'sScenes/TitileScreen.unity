@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.30980393, g: 0.0627451, b: 0.34117648, a: 1}
+  m_Color: {r: 0.30588236, g: 0.101960786, b: 0.30980393, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
