@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PrototypePlatformerScene.unity
     guid: 06e5a2655fda90345a2e28dcf01eac5a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: a0b7d9b278efc424f9d5f3b0d5470d40
   - enabled: 1
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tyler'sScenes/TitileScreen.unity
     guid: 2739ea379df418c488c670b4c2b9d56b
+  - enabled: 1
+    path: Assets/Scenes/Tyler'sScenes/Win.unity
+    guid: 30009963303e7394c8c533f2e939fb56
   m_configObjects: {}

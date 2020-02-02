@@ -43,8 +43,9 @@ public class CharCont : MonoBehaviour
     void Update()
     {
 
-        if (pickupsNum == pickupsTarget)
+        if (pickupsNum == 6)
         {
+            SceneManager.LoadScene("Win");
             print("You got them all!");
         }
 
@@ -122,12 +123,14 @@ public class CharCont : MonoBehaviour
         {
             //print("Right pressed");
             anim.SetFloat("Walk",Mathf.Abs(speed));
+            Igor.transform.rotation = new Quaternion(0, 0, 0, 0);
             rigid.velocity = new Vector2(speed * 2, rigid.velocity.y);
             movedRight = true;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
             anim.SetFloat("Walk", Mathf.Abs(speed));
+            Igor.transform.rotation = new Quaternion(0, 180, 0, 0);
             //print("Left pressed");
             rigid.velocity = new Vector2(speed * -2, rigid.velocity.y);
             movedRight = false;
