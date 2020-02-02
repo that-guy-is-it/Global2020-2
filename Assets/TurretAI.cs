@@ -7,8 +7,8 @@ public class TurretAI : MonoBehaviour
 
     public bool isShootingRight = true;
     public GameObject bulletPrefab;
-    public bool readyToShoot = true;
-    public float nextShot = 1.0f;
+    public bool readyToShoot = false;
+    public float nextShot = 4.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class TurretAI : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPrefab, new Vector2 (transform.position.x, transform.position.y), new Quaternion());
             if (!isShootingRight)
             {
-                bullet.GetComponent<BulletAI>().direction = -1.0f;
+                bullet.GetComponent<BulletAI>().direction *= -1.0f;
             }
             //set the time
             nextShot = Time.time + 2.5f;

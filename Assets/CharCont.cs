@@ -19,7 +19,7 @@ public class CharCont : MonoBehaviour
     private bool messagePrinted = false;
     public int pickupsNum = 0;
     const int pickupsTarget = 3;
-    private bool invincible;
+    public bool invincible;
     private bool isHit = false;
     float countdown;
     private bool rolled = false;
@@ -57,8 +57,19 @@ public class CharCont : MonoBehaviour
         {
             InvincibilityFrames(3);
         }
+        CheckInvinsibility();
+        
         MoveCompute();
 
+    }
+
+    public void CheckInvinsibility()
+    {
+        if (Time.time > countdown)
+        {
+            invincible = false;
+            isHit = false;
+        }
     }
 
     public void MoveCompute()
@@ -180,7 +191,7 @@ public class CharCont : MonoBehaviour
         }
     }
 
-    void TakeDamage()
+    public void TakeDamage()
     {
         if (!invincible)
         {
