@@ -16,6 +16,9 @@ public class CharCont : MonoBehaviour
     public bool onLadder = false;
     public int healthPoints = 3;
     private bool messagePrinted = false;
+    private bool invincible;
+    private bool isHit = false;
+    float countdown;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,11 @@ public class CharCont : MonoBehaviour
         {
             messagePrinted = true;
             print("Git gud lol");
+        }
+
+        if(isHit == true)
+        {
+            InvincibilityFrames();
         }
     }
 
@@ -109,7 +117,11 @@ public class CharCont : MonoBehaviour
         {
             if(healthPoints > 0)
             {
-                healthPoints--;
+                if (!invincible)
+                {
+                    healthPoints--;
+                    isHit = true;
+                }
                 print(healthPoints);
             }
             if (movedRight)
@@ -121,6 +133,24 @@ public class CharCont : MonoBehaviour
                 print("Flying Right");
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
+        }
+    }
+
+    private void InvincibilityFrames()
+    {
+        if (invincible)
+        {
+            if(Time.time > countdown)
+            {
+                Debug.Log("3 seconds have passed");
+                invincible = false;
+                isHit = false;
+            }
+        }
+        else
+        {
+            countdown = Time.time + 3;
+            invincible = true;
         }
     }
 

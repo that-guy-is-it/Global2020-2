@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 531059469}
   m_Layer: 0
   m_Name: Spikeys
-  m_TagString: GameManager
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -728,7 +728,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 1.2, y: 1, z: 0}
+  m_ChunkCullingBounds: {x: 0.9166666, y: 0.75, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1033,6 +1033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1032970593}
+  - component: {fileID: 1032970594}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1062,6 +1063,18 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -25}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1032970594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032970592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0404aca0e0f4ee4c9aeab8c6e142105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1079789380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1531,7 @@ MonoBehaviour:
   jumpSpeed: 3
   movedRight: 1
   onLadder: 0
+  healthPoints: 3
 --- !u!1 &1712352771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,6 +1908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManagerFab
+      objectReference: {fileID: 0}
+    - target: {fileID: 386652392772590474, guid: f3665ebd01dabbb4d843e371b85b23a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1143636617533693784, guid: f3665ebd01dabbb4d843e371b85b23a4,
         type: 3}
