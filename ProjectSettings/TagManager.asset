@@ -8,6 +8,7 @@ TagManager:
   - Ladder
   - GameManager
   - Spikes
+  - Pickup
   layers:
   - Default
   - TransparentFX
