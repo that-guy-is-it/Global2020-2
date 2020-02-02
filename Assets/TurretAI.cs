@@ -21,7 +21,7 @@ public class TurretAI : MonoBehaviour
     {
         if (readyToShoot)
         {
-            print("Ready!");
+            //print("Ready!");
             //shoot
             GameObject bullet = GameObject.Instantiate(bulletPrefab, new Vector2 (transform.position.x, transform.position.y), new Quaternion());
             if (!isShootingRight)
@@ -34,7 +34,7 @@ public class TurretAI : MonoBehaviour
 
         } else
         {
-            print("Waiting!");
+            //print("Waiting!");
             //do the countdown
             if (Time.time > nextShot)
             {
