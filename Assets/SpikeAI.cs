@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpikeAI : MonoBehaviour
@@ -9,14 +10,24 @@ public class SpikeAI : MonoBehaviour
     bool flag = false;
     float timeFlag;
     GameObject myself;
-    public Collider2D collider;
-
+    public List<Collider2D> colliders;
 
     // Start is called before the first frame update
     void Start()
     {
         myself = this.gameObject;
+        colliders = this.GetComponents<Collider2D>().ToList();
         //collider = this.GetComponent<CompositeCollider2D>();
+    }
+
+    void toggleColliders(bool toToggle)
+    {
+
+        foreach(Collider2D col in colliders)
+        {
+            col.enabled = toToggle;
+        }
+        
     }
 
     // Update is called once per frame
@@ -34,20 +45,19 @@ public class SpikeAI : MonoBehaviour
             //do state change...
             if (currState == states.Hidden)
             {
-                collider.enabled = false;
+                toggleColliders(false);
                 myself.transform.position = new Vector3 (0, -1, 0);
             }
             else if (currState == states.Ready)
             {
                 myself.transform.position = new Vector3(0, -0.5f, 0);
-                collider.enabled = false;
-                print(collider.enabled);
+                toggleColliders(false);
+                //print(collider.enabled);
             }
             else if (currState == states.Out)
             {
-                collider.enabled = true;
+                toggleColliders(true);
                 myself.transform.position = new Vector3(0, 0, 0);
-                print(collider.enabled);
             }
 
 
