@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Spikes
   - Pickup
+  - Bullet
   layers:
   - Default
   - TransparentFX

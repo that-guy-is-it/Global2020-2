@@ -24,6 +24,8 @@ public class CharCont : MonoBehaviour
     float countdown;
     private bool rolled = false;
     private float rollTime = 0;
+    float curTime = 0;
+    float nextDamage = 1;
 
     private bool grabbedPickupForLevel = false;
 
@@ -45,7 +47,6 @@ public class CharCont : MonoBehaviour
         }
 
         //grounded = 
-        MoveCompute();
         if (healthPoints == 0 && messagePrinted)
         {
             messagePrinted = true;
@@ -56,6 +57,8 @@ public class CharCont : MonoBehaviour
         {
             InvincibilityFrames(3);
         }
+        MoveCompute();
+
     }
 
     public void MoveCompute()
@@ -136,7 +139,7 @@ public class CharCont : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Trigger acted upon");
+        //print("Trigger acted upon");
         if (collision.gameObject.tag == "Ladder")
         {
             onLadder = true;
@@ -168,7 +171,8 @@ public class CharCont : MonoBehaviour
             {
                 if (!invincible)
                 {
-                    healthPoints--;
+                    //healthPoints--;
+                    DecreaseHealth();
                     isHit = true;
                 }
                 print(healthPoints);
@@ -180,6 +184,19 @@ public class CharCont : MonoBehaviour
             else
             {
                 rigid.AddForce((transform.right + transform.up) * 500);
+            }
+        }
+        else if (collision.gameObject.tag == "Laser")
+        {
+            if (healthPoints > 0)
+            {
+                if (!invincible)
+                {
+                    //healthPoints--;
+                    DecreaseHealth();
+                    isHit = true;
+                }
+                print(healthPoints);
             }
         }
         else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
@@ -200,7 +217,9 @@ public class CharCont : MonoBehaviour
         }
         else
         {
-            countdown = Time.time + timeDelay;
+            //countdown = Time.time + timeDelay;
+            countdown = Time.time + 2;
+            Debug.Log("added 2 second of invulnerablility");
             invincible = true;
         }
     }
@@ -233,7 +252,20 @@ public class CharCont : MonoBehaviour
 
     }
 
+    private void DecreaseHealth()
+    {
+        if (curTime <= 0)
+        {
+            Debug.Log("Damage");
+            healthPoints--;
+            curTime = nextDamage;
+        }
+        else
+        {
 
+            curTime -= .5f;
+        }
+    }
 
 }
 

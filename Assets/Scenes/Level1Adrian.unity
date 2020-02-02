@@ -228,7 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShootingRight: 1
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 4365361885915410239, guid: 50d19fa920289c347af67889662dff4d,
+    type: 3}
   readyToShoot: 1
   nextShot: 0
 --- !u!1001 &500521105
