@@ -17,6 +17,11 @@ public class CharCont : MonoBehaviour
     public GameObject pickupObject;
     public int healthPoints = 3;
     private bool messagePrinted = false;
+
+    private bool invincible;
+    private bool isHit = false;
+    float countdown;
+
     private bool grabbedPickupForLevel = false;
 
     // Start is called before the first frame update
@@ -36,6 +41,11 @@ public class CharCont : MonoBehaviour
         {
             messagePrinted = true;
             print("Git gud lol");
+        }
+
+        if(isHit == true)
+        {
+            InvincibilityFrames();
         }
     }
 
@@ -117,7 +127,11 @@ public class CharCont : MonoBehaviour
         {
             if (healthPoints > 0)
             {
-                healthPoints--;
+                if (!invincible)
+                {
+                    healthPoints--;
+                    isHit = true;
+                }
                 print(healthPoints);
             }
             if (movedRight)
@@ -132,6 +146,24 @@ public class CharCont : MonoBehaviour
         } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
         {
             print("You win!");
+        }
+    }
+
+    private void InvincibilityFrames()
+    {
+        if (invincible)
+        {
+            if(Time.time > countdown)
+            {
+                Debug.Log("3 seconds have passed");
+                invincible = false;
+                isHit = false;
+            }
+        }
+        else
+        {
+            countdown = Time.time + 3;
+            invincible = true;
         }
     }
 
