@@ -39,7 +39,7 @@ public class CharCont : MonoBehaviour
     void Update()
     {
 
-        if(pickupsNum == pickupsTarget)
+        if (pickupsNum == pickupsTarget)
         {
             print("You got them all!");
         }
@@ -78,8 +78,8 @@ public class CharCont : MonoBehaviour
                     //rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(speed, rigid.velocity.y), ref currVel, 0.02f);
                     //rigid.velocity = new Vector2(speed * 4, 0);
                     rigid.AddForce(transform.right * speed * 3000);
-                    if(Time.time > rollTime)
-                    rolled = true;
+                    if (Time.time > rollTime)
+                        rolled = true;
                 }
                 else if (Time.time > rollTime)
                 {
@@ -139,13 +139,15 @@ public class CharCont : MonoBehaviour
         if (collision.gameObject.tag == "Ladder")
         {
             onLadder = true;
-        } else if (collision.gameObject.tag == "Pickup") 
+        }
+        else if (collision.gameObject.tag == "Pickup")
         {
             //if grabbed the pickup...
             grabbedPickupForLevel = true;
             GameObject.Destroy(pickupObject);
 
-        }  else if (collision.gameObject.tag == "Spikes")
+        }
+        else if (collision.gameObject.tag == "Spikes")
         {
             if (healthPoints > 0)
             {
@@ -164,7 +166,8 @@ public class CharCont : MonoBehaviour
             {
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
-        } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
+        }
+        else if (collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
         {
             print("You win!");
         }
@@ -218,3 +221,4 @@ public class CharCont : MonoBehaviour
 
 
 }
+
