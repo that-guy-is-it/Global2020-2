@@ -54,7 +54,7 @@ public class CharCont : MonoBehaviour
 
         if (isHit == true)
         {
-            InvincibilityFrames();
+            InvincibilityFrames(3);
         }
     }
 
@@ -66,6 +66,7 @@ public class CharCont : MonoBehaviour
             if (rolled == true)
             {
                 Debug.Log("Added 1 second");
+                InvincibilityFrames(0.5f);
                 rollTime = Time.time + 1;
                 rolled = false;
             }
@@ -147,6 +148,20 @@ public class CharCont : MonoBehaviour
 
         }  else if (collision.gameObject.tag == "Spikes")
         {
+            TakeDamage();   
+        } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
+        {
+            print("You win!");
+        } else if(collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage();
+        }
+    }
+
+    void TakeDamage()
+    {
+        if (!invincible)
+        {
             if (healthPoints > 0)
             {
                 if (!invincible)
@@ -164,13 +179,10 @@ public class CharCont : MonoBehaviour
             {
                 rigid.AddForce((transform.right + transform.up) * 500);
             }
-        } else if(collision.gameObject.tag == "Finish" && grabbedPickupForLevel)
-        {
-            print("You win!");
         }
     }
 
-    private void InvincibilityFrames()
+    private void InvincibilityFrames(float timeDelay)
     {
         if (invincible)
         {
@@ -182,7 +194,7 @@ public class CharCont : MonoBehaviour
         }
         else
         {
-            countdown = Time.time + 3;
+            countdown = Time.time + timeDelay;
             invincible = true;
         }
     }
