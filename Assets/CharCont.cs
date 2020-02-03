@@ -43,8 +43,9 @@ public class CharCont : MonoBehaviour
     void Update()
     {
 
-        if (pickupsNum == pickupsTarget)
+        if (pickupsNum >= 6)
         {
+            SceneManager.LoadScene("Win");
             print("You got them all!");
         }
 
